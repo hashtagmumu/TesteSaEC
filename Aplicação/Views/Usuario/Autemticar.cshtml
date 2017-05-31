@@ -1,0 +1,31 @@
+﻿@model Aplicação.Models.LoginViewModel
+@{
+    ViewBag.Title = "Solução Escolar ";
+    Layout = "~/Views/Shared/_LayoutSystem.cshtml";
+
+}
+
+<section id="loginForm">
+    <div class="wrapper">
+        @using (Html.BeginForm("Autemticar", "usuario", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "")
+            <div class="title">Acesso Ao Sistema </div>
+            <input type="text" name="email" placeholder="email" autofocus />
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            <i class="fa fa-user"></i>
+            <input type="password" name="senha" placeholder="Senha" />
+            @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
+            <i class="fa fa-key"></i>
+            <br />
+            <a href="~/usuario/Register">Me inscrever</a>
+            <div>
+                <div class="text-danger">@ViewBag.Message</div>
+            </div>
+            <button><span class="state">Entrar</span></button>
+        }
+
+
+    </div>
+</section>

@@ -1,0 +1,109 @@
+﻿@model IEnumerable<DATA.Modelos.Estados>
+@{
+    ViewBag.Title = "Painel de Controle Estado";
+}
+
+<div >
+    <div>
+        <div >
+            <div >
+                <div>
+                    <div>
+                        <div >@ViewBag.Title</div>
+                    </div>
+                    <div>
+                        @Html.ActionLink("Cadastrar Novo", "Create", null, new { @Class = "TT-button TT-button-success" })
+                        </p>
+                        <table id="estadoindex" class=" row-border compact" cellspacing="0" tamanho="100%">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        @Html.DisplayName("Estado")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Sigla")
+                                    </th>
+                                  
+                                    <th>
+                                        Opções
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+            {
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UF)
+                                        </td>
+                                       
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SIgla)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Editar", "editar", new { id = item.codigo }, new { @Class = "TT-button TT-button-primary" })
+                                            @Html.ActionLink("Apagar", "Delete", new { id = item.codigo }, new { @Class = "TT-button TT-button-danger" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="clear:both;">
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/DataTables-1.10.5/media/js/jquery.js"></script>
+<script src="~/Scripts/DataTables-1.10.5/media/js/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables-1.10.5/media/js/jquery.dataTables.js"></script>
+
+<link href="~/Content/criar.css" rel="stylesheet" />
+<link href="~/Content/home.css" rel="stylesheet" />
+<link href="~/Content/ajustes.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#estadoindex').DataTable({
+            "columns": [
+                { className: "dt-center" },
+                { className: "dt-center" },
+               
+                { className: "dt-center" }
+
+            ],
+            "scrollX": true,
+            responsive: true,
+            "language": {
+                "emptyTable": "Não há dados disponíveis na tabela",
+                "info": "Mostrando de _START_ até _END_ de _TOTAL_ itens",
+                "infoEmpty": "Mostrando de 0 até 0 de 0 itens",
+                "infoFiltered": "(filtrado a partir de  _MAX_ itens)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ itens",
+                "loadingRecords": "Carregando...",
+                "processing": "Processando...",
+                "search": "Pesquisar:",
+                "zeroRecords": "Não foram encontrados registros correspondentes",
+                "paginate": {
+                    "first": "Primera",
+                    "last": "Última",
+                    "next": "Próxima",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ": Clique para classificar a coluna em ordem ascedente",
+                    "sortDescending": ": Clique para classificar a coluna em ordem descendente"
+                }
+            }
+        });
+    });
+</script>

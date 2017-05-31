@@ -1,0 +1,43 @@
+﻿@model DATA.Modelos.Cidades
+@Model 
+@{
+    ViewBag.Title = "Remover cidade";
+}
+<div ">
+    <div >Deletar Cidade</div>
+    <div class="panel-body">
+        <h3>Deseja deletar esta Cidade ?</h3>
+        <div>
+            <hr />
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.cidade)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cep)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Estado.UF)
+                </dt>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div>
+                    <div class="CONT-LIST">
+                        <a href="" data-toggle="tab">
+                            <button><span class="state">Deletar Cidade</span></button>
+                        </a>
+                    </div>
+                    @Html.ActionLink("Retornar", "Index")
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

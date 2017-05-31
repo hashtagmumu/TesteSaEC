@@ -1,0 +1,58 @@
+﻿@model DATA.Modelos.Estados
+@Model estados
+@{
+    ViewBag.Title = "Inserir - Estado";
+}
+<head>
+    <link href="~/Content/registrar.css" rel="stylesheet" />
+</head>
+<h2>@ViewBag.Title</h2>
+<section id="inserircidade ">
+    @using (Html.BeginForm("create", "Estado", FormMethod.Post, new { @id = "createform", @class = "createform" }))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <div class="CONT-LIST">
+                @Html.LabelFor(model => model.UF, htmlAttributes: new { @class = "COLUNA-largura-1 control-label" })
+                <div class="COLUNA-largura-2">
+                    @Html.EditorFor(model => model.UF, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UF, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.SIgla, htmlAttributes: new { @class = "COLUNA-largura-1 control-label" })
+                <div class="COLUNA-largura-2">
+                    @Html.EditorFor(model => model.SIgla, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SIgla, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="en-space-v-10">
+            </div>
+        </div>
+        <div class="CONT-LIST">
+            <a href="~/Cidade/create" data-toggle="tab">
+                <button><span class="state">Cadastrar Estado</span></button>
+            </a>
+        </div>
+        <div class="row">
+            <div class="en-space-v-10">
+                <div class="en-space-v-10">
+                </div>
+                <div class="container">
+                    <div class="alert alert-danger fade in " id="msgErroDiv" style="display: block;">
+                        <div id="msgErro">@ViewBag.Message</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Retornar", "Index")
+            </div>
+        </div>
+
+
+
+
+    }
+</section>

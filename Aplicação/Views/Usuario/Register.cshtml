@@ -1,0 +1,106 @@
+﻿@model Aplicação.Models.registerViewModel
+@{
+    ViewBag.Title = "Cadastrar Usuario ";
+    Layout = "~/Views/Shared/_LayoutSystem.cshtml";
+
+}
+<head>
+
+
+
+    <link href="~/Content/registrar.css" rel="stylesheet" />
+   
+    
+</head>
+
+<h2>@ViewBag.Title</h2>
+
+<section id="SCregister ">
+    <h3>*Os campos marcados com asterisco são de preenchimento obrigatório.</h3>
+
+    <ul class="nav nav-tabs">
+        <li class=""><a href="~/Usuario/Autemticar" ">Acesso Ao Sistema</a></li>
+    </ul>
+    @using (Html.BeginForm("Register", "usuario", FormMethod.Post, new { @id = "accountForm", @class = "accountForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <div class="CONT-LIST">
+                <label class="COLUNA-largura-1" for="NomePessoas">*Nome:</label>
+                <div class="COLUNA-largura-5">
+                    <input class="formulario-controle" autofocus="" id="NomePessoas" name="nome" required="required" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="nome" data-valmsg-replace="true"></span>
+                </div>
+                <label class="COLUNA-largura-1 " for="Email">*E-mail:</label>
+                <div class="COLUNA-largura-5">
+                    <input class="formulario-controle" autofocus="" id="Email" name="Email" required="required" type="email" value="">
+                    <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="CONT-LIST">
+                <label class="COLUNA-largura-1" for="Telefone">*Telefone:</label>
+                <div class="COLUNA-largura-2">
+                    <input class="formulario-controle" autofocus="" id="Telefone" name="Telefone" required="required" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="Telefone" data-valmsg-replace="true"></span>
+                </div>
+                <label class="COLUNA-largura-1 " for="CPF">*CPF:</label>
+                <div class="COLUNA-largura-2">
+                    <input class="formulario-controle valid" autofocus="" data-mask="999.999.999-99" id="CPF" name="CPF" placeholder="Apenas Números" required="required" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="CPF" data-valmsg-replace="true"></span>
+                </div>
+                <label class="COLUNA-largura-1 " for="Sexo">*Sexo:</label>
+                <div class="COLUNA-largura-5">
+                    <select class="formulario-controle" id="Sexo" name="Sexo" required="required">
+                        <option value=""></option>
+                        <option value="F">Feminino</option>
+                        <option value="M">Masculino</option>
+                    </select>
+                    <span class="field-validation-valid" data-valmsg-for="Sexo" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="CONT-LIST">
+
+
+
+                <label class="COLUNA-largura-1  " for="nomcidade">cidade:</label>
+                <div class="COLUNA-largura-5">
+                    <input class="formulario-controle" autofocus="" id="nomecidade" name="cidade" required="required" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="cidade" data-valmsg-replace="true"></span>
+                </div>
+                <label class="COLUNA-largura-1  " for="senha">*Senha:</label>
+                <div class="COLUNA-largura-5">
+                    <input class="formulario-controle" autofocus="" id="senha" name="senha" required="required" type="password" value="">
+                    <span class="field-validation-valid" data-valmsg-for="senha" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="en-space-v-10">
+                </div>
+            </div>
+            <div class="CONT-LIST">
+                <a href="~/Usuario/Register" data-toggle="tab">
+                    <button><span class="state">Registrar usuario</span></button>
+                </a>
+            </div>
+            <div class="row">
+                <div class="en-space-v-10">
+                    <div class="en-space-v-10">
+                </div>
+                <div class="container">
+                    <div class="alert alert-danger fade in " id="msgErroDiv" style="display: block;">
+                        <div id="msgErro">@ViewBag.Message</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+
+
+
+
+    }
+</section>
+

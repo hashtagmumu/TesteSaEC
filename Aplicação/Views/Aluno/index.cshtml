@@ -1,0 +1,142 @@
+﻿@model IEnumerable<DATA.Modelos.Alunos>
+@{
+    ViewBag.Title = "Painel de Controle Alunos";
+}
+
+<div >
+    <div class="TT-grid TT-grid-maior">
+        <div class="TT-tamanho-large-1-1 TT-tamanho-medium-1-1 TT-tamanho-maior-1-1" style="margin-top:-4px;">
+            <div class="TT-grid TT-grid-maior">
+                <div class="TT-tamanho-1-1 margin-top-15 TT-grid TT-grid-maior ">
+                    <div class="TT-tamanho-1-1 item-group-block-header">
+                        <div  class="TT-h3 bg-palettecolor-tertiary fg-white ">@ViewBag.Title</div>
+                    </div>
+                    <div class="TT-tamanho-1-1">
+                        @Html.ActionLink("Cadastrar Novo", "Create", null, new { @Class = "TT-button TT-button-success" })
+                        </p>
+                        <table id="alunoindex" class=" row-border compact" cellspacing="0" tamanho="100%">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("nome")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("telefone")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("CPF")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Sexo")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Data de Cadastro")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Data de Nascimento")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Cidade")
+                                    </th>
+                                    <th>
+                                        Opções
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+            {
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.nome)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.telefone)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.cpf)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.sexo)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dtcad)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dtcad)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.cidades.cidade)
+                                        </td>
+                                     
+                                        <td>
+                                            @Html.ActionLink("Editar", "Edit", new { id = item.codigo }, new { @Class = "TT-button TT-button-primary" })
+                                            @Html.ActionLink("Apagar", "Delete", new { id = item.codigo }, new { @Class = "TT-button TT-button-danger" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="clear:both;">
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/DataTables-1.10.5/media/js/jquery.js"></script>
+<script src="~/Scripts/DataTables-1.10.5/media/js/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables-1.10.5/media/js/jquery.dataTables.js"></script>
+
+<link href="~/Content/criar.css" rel="stylesheet" />
+<link href="~/Content/home.css" rel="stylesheet" />
+<link href="~/Content/ajustes.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#alunoindex').DataTable({
+            "columns": [
+                { className: "dt-center" },
+                { className: "dt-center" },
+                { className: "dt-center" },
+                { className: "dt-center" },
+                { className: "dt-center" },
+                { className: "dt-center" },
+               
+                { className: "dt-left" },
+                { className: "dt-left" }
+
+            ],
+            "scrollX": true,
+            responsive: true,
+            "language": {
+                "emptyTable": "Não há dados disponíveis na tabela",
+                "info": "Mostrando de _START_ até _END_ de _TOTAL_ itens",
+                "infoEmpty": "Mostrando de 0 até 0 de 0 itens",
+                "infoFiltered": "(filtrado a partir de  _MAX_ itens)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ itens",
+                "loadingRecords": "Carregando...",
+                "processing": "Processando...",
+                "search": "Pesquisar:",
+                "zeroRecords": "Não foram encontrados registros correspondentes",
+                "paginate": {
+                    "first": "Primera",
+                    "last": "Última",
+                    "next": "Próxima",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ": Clique para classificar a coluna em ordem ascedente",
+                    "sortDescending": ": Clique para classificar a coluna em ordem descendente"
+                }
+            }
+        });
+    });
+</script>

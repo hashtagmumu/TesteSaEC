@@ -1,0 +1,63 @@
+﻿@model DATA.Modelos.Cidades
+@Model 
+@{
+    ViewBag.Title = "Inserir - Cidade";
+}
+<head>
+<link href="~/Content/registrar.css" rel="stylesheet" />
+</head>
+<h2>@ViewBag.Title</h2>
+<section id="inserircidade ">
+    @using (Html.BeginForm("create", "Cidade", FormMethod.Post, new { @id = "createform", @class = "createform" }))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <div class="CONT-LIST">
+                @Html.LabelFor(model => model.cidade, htmlAttributes: new { @class = "COLUNA-largura-1 control-label" })
+                <div class="COLUNA-largura-2">
+                    @Html.EditorFor(model => model.cidade, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.cidade, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.Cep, htmlAttributes: new { @class = "COLUNA-largura-1 control-label" })
+                <div class="COLUNA-largura-2">
+                    @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+                </div>
+                @Html.Label("Selecione o Estado", htmlAttributes: new { @class = "COLUNA-largura-1 control-label" })
+                <div class="COLUNA-md-10">
+                    @Html.DropDownList("codigouf", new SelectList(ViewBag.estadolista, "codigo", "UF"))
+                    @Html.ValidationMessageFor(model => model.codigouf)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="en-space-v-10">
+            </div>
+        </div>
+        <div class="CONT-LIST">
+            <a href="~/Cidade/create" data-toggle="tab">
+                <button><span class="state">Cadastrar Cidade</span></button>
+            </a>
+        </div>
+        <div class="row">
+            <div class="en-space-v-10">
+                <div class="en-space-v-10">
+                </div>
+                <div class="container">
+                    <div class="alert alert-danger fade in " id="msgErroDiv" style="display: block;">
+                        <div id="msgErro">@ViewBag.Message</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Retornar", "Index")
+            </div>
+        </div>
+
+
+
+
+    }
+ </section>
